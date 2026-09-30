@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Video Maker</title>
+  <meta name="description" content="Personal AI video maker">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">✦</span> AI Video Maker</div>
+    <div class="status"><span class="dot"></span> Personal Studio</div>
+  </header>
+
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">CREATE WITH AI</p>
+      <h1>Turn an idea into a video.</h1>
+      <p class="subtitle">Write a scene, choose your format and style, then generate your video.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel controls">
+        <div class="field">
+          <label for="prompt">Describe your video</label>
+          <textarea id="prompt" rows="6" placeholder="Example: A cinematic drone shot flying over Batumi at sunset, golden light reflecting on the Black Sea, realistic, smooth camera movement..."></textarea>
+          <div class="prompt-footer"><span id="charCount">0</span>/1000</div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label for="aspect">Format</label>
+            <select id="aspect">
+              <option value="16:9">16:9 — YouTube</option>
+              <option value="9:16">9:16 — Reels / Shorts</option>
+              <option value="1:1">1:1 — Square</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="duration">Duration</label>
+            <select id="duration">
+              <option value="5">5 seconds</option>
+              <option value="10">10 seconds</option>
+              <option value="15">15 seconds</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Style</label>
+          <div class="styles" id="styles">
+            <button class="style active" data-style="Cinematic">🎬 <span>Cinematic</span></button>
+            <button class="style" data-style="Realistic">📷 <span>Realistic</span></button>
+            <button class="style" data-style="Anime">🌸 <span>Anime</span></button>
+            <button class="style" data-style="3D">🧊 <span>3D</span></button>
+          </div>
+        </div>
+
+        <button class="generate" id="generate">
+          <span class="spark">✦</span>
+          Generate video
+        </button>
+        <p class="note">Phase 1: interface ready. Phase 2 will connect this button to a real AI video model.</p>
+      </div>
+
+      <div class="panel preview-panel">
+        <div class="preview-head">
+          <span>Preview</span>
+          <span id="formatBadge">16:9</span>
+        </div>
+        <div class="preview" id="preview">
+          <div class="preview-content" id="previewContent">
+            <div class="play-icon">▶</div>
+            <h2>Your video will appear here</h2>
+            <p>Enter a prompt and press Generate.</p>
+          </div>
+          <div class="loader hidden" id="loader">
+            <div class="spinner"></div>
+            <strong>Preparing your video...</strong>
+            <span>This demo is not connected to a GPU yet.</span>
+          </div>
+        </div>
+        <div class="preview-actions">
+          <button class="secondary" id="download" disabled>↓ Download MP4</button>
+          <button class="secondary" id="newVideo">＋ New video</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">YOUR WORK</p>
+          <h2>Generation history</h2>
+        </div>
+        <button class="clear" id="clearHistory">Clear history</button>
+      </div>
+      <div class="history" id="history">
+        <div class="empty">No generated videos yet.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>AI Video Maker • Personal project</footer>
+  <script src="app.js"></script>
+</body>
+</html>
