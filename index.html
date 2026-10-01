@@ -4,86 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Video Maker</title>
-  <meta name="description" content="Personal AI video maker">
+  <meta name="description" content="Personal AI image-to-video maker">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topbar">
     <div class="brand"><span class="brand-mark">✦</span> AI Video Maker</div>
-    <div class="status"><span class="dot"></span> Personal Studio</div>
+    <div class="status"><span class="dot"></span> Wan 2.2 • Free GPU</div>
   </header>
 
   <main class="app">
     <section class="hero">
-      <p class="eyebrow">CREATE WITH AI</p>
-      <h1>Turn an idea into a video.</h1>
-      <p class="subtitle">Write a scene, choose your format and style, then generate your video.</p>
+      <p class="eyebrow">AI VIDEO STUDIO</p>
+      <h1>Bring an image to life.</h1>
+      <p class="subtitle">Upload an image, describe the movement, and generate a real AI video.</p>
     </section>
 
     <section class="workspace">
       <div class="panel controls">
         <div class="field">
-          <label for="prompt">Describe your video</label>
-          <textarea id="prompt" rows="6" placeholder="Example: A cinematic drone shot flying over Batumi at sunset, golden light reflecting on the Black Sea, realistic, smooth camera movement..."></textarea>
+          <label for="imageInput">Input image</label>
+          <label class="upload" id="uploadBox" for="imageInput">
+            <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp">
+            <div class="upload-icon">↑</div>
+            <strong id="uploadTitle">Click to upload an image</strong>
+            <span id="uploadHint">PNG, JPG or WebP</span>
+            <img id="imagePreview" class="image-preview hidden" alt="Selected image">
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="prompt">Describe the motion</label>
+          <textarea id="prompt" rows="5" maxlength="1000" placeholder="Example: The camera slowly moves forward while the person walks naturally. Cinematic realistic movement, smooth camera motion, natural lighting."></textarea>
           <div class="prompt-footer"><span id="charCount">0</span>/1000</div>
         </div>
 
         <div class="grid">
           <div class="field">
-            <label for="aspect">Format</label>
-            <select id="aspect">
-              <option value="16:9">16:9 — YouTube</option>
-              <option value="9:16">9:16 — Reels / Shorts</option>
-              <option value="1:1">1:1 — Square</option>
-            </select>
-          </div>
-
-          <div class="field">
             <label for="duration">Duration</label>
             <select id="duration">
+              <option value="2">2 seconds</option>
+              <option value="3.5" selected>3.5 seconds</option>
               <option value="5">5 seconds</option>
-              <option value="10">10 seconds</option>
-              <option value="15">15 seconds</option>
             </select>
           </div>
-        </div>
-
-        <div class="field">
-          <label>Style</label>
-          <div class="styles" id="styles">
-            <button class="style active" data-style="Cinematic">🎬 <span>Cinematic</span></button>
-            <button class="style" data-style="Realistic">📷 <span>Realistic</span></button>
-            <button class="style" data-style="Anime">🌸 <span>Anime</span></button>
-            <button class="style" data-style="3D">🧊 <span>3D</span></button>
+          <div class="field">
+            <label for="steps">Quality / steps</label>
+            <select id="steps">
+              <option value="4" selected>Fast — 4 steps</option>
+              <option value="6">Balanced — 6 steps</option>
+              <option value="8">Quality — 8 steps</option>
+            </select>
           </div>
         </div>
 
         <button class="generate" id="generate">
-          <span class="spark">✦</span>
-          Generate video
+          <span class="spark">✦</span> Generate real AI video
         </button>
-        <p class="note">Phase 1: interface ready. Phase 2 will connect this button to a real AI video model.</p>
+        <p class="note" id="statusText">Uses the public Wan 2.2 ZeroGPU Space. Free quotas apply.</p>
       </div>
 
       <div class="panel preview-panel">
         <div class="preview-head">
-          <span>Preview</span>
-          <span id="formatBadge">16:9</span>
+          <span>Generated video</span>
+          <span id="formatBadge">AI • MP4</span>
         </div>
         <div class="preview" id="preview">
           <div class="preview-content" id="previewContent">
             <div class="play-icon">▶</div>
             <h2>Your video will appear here</h2>
-            <p>Enter a prompt and press Generate.</p>
+            <p>Upload an image and describe the motion.</p>
           </div>
           <div class="loader hidden" id="loader">
             <div class="spinner"></div>
-            <strong>Preparing your video...</strong>
-            <span>This demo is not connected to a GPU yet.</span>
+            <strong id="loaderTitle">Connecting to AI...</strong>
+            <span id="loaderDetail">The free GPU may take a moment to start.</span>
           </div>
+          <video id="videoOutput" class="video-output hidden" controls playsinline></video>
         </div>
         <div class="preview-actions">
-          <button class="secondary" id="download" disabled>↓ Download MP4</button>
+          <a class="secondary disabled" id="download" href="#" download="ai-video.mp4">↓ Download MP4</a>
           <button class="secondary" id="newVideo">＋ New video</button>
         </div>
       </div>
@@ -103,7 +103,7 @@
     </section>
   </main>
 
-  <footer>AI Video Maker • Personal project</footer>
-  <script src="app.js"></script>
+  <footer>AI Video Maker • Personal project • Powered by Wan 2.2</footer>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

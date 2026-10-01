@@ -1,9 +1,8 @@
-# AI Video Maker
+# AI Video Maker — Phase 2
 
-Personal AI video maker hosted on GitHub Pages.
+Real image-to-video generation using the public Hugging Face ZeroGPU Space:
+`zerogpu-aoti/wan2-2-fp8da-aoti-faster`
 
-## Current version
-Phase 1 contains the complete frontend UI. The Generate button currently runs a local demo action.
+This version uses the Gradio JavaScript client directly from the browser. No private Hugging Face token is stored in this public repository.
 
-## Next phase
-Connect the frontend to a real text-to-video backend, preferably through a secure server/Hugging Face Space so private API tokens are not exposed in GitHub Pages.
+Important: the public ZeroGPU Space has daily usage quotas and may be busy.
